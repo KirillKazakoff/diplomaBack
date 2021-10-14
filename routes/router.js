@@ -1,13 +1,11 @@
 import combineRouters from 'koa-combine-routers';
 
 import pingRouter from './ping/ping';
-// import loginRouter from './user/login';
-// import messageRouter from './user/chat';
+import messageRouter from './user/message';
 
 const router = combineRouters(
     pingRouter,
-    // loginRouter,
-    // messageRouter,
+    messageRouter,
 );
 
 export default router;

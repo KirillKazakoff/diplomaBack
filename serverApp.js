@@ -1,15 +1,11 @@
+// import koaBody from 'koa-body';
 import http from 'http';
 import Koa from 'koa';
-import koaBody from 'koa-body';
+import serve from 'koa-static';
 import router from './routes/router';
-// import MyWs from './myWs';
+
 
 const app = new Koa();
-
-app.use(koaBody({
-    urlencoded: true,
-    multipart: true,
-}));
 
 app.use(async (ctx, next) => {
     const origin = ctx.request.get('Origin');
@@ -45,7 +41,11 @@ app.use(async (ctx, next) => {
 
 app.use(router());
 
+// const staticDirPath = path.join(__dirname, 'public');
+// const diePath = path.join(__dirname, '/user/pubic');
+app.use(serve('./public'));
+
+// app.use(serve('./uploads'));
+
 const port = process.env.PORT || 9091;
 const server = http.createServer(app.callback()).listen(port);
-
-// const myWs = new MyWs(server);
