@@ -4,6 +4,7 @@ import initData from './dbInit';
 class Db {
     constructor() {
         this.messagesData = initData;
+        this.lazyIndex = 0;
     }
 
     addFileData(msgData) {

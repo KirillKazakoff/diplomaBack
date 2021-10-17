@@ -41,6 +41,7 @@ app.use(async (ctx, next) => {
 app.use(router());
 
 app.use(serve('./public'));
+app.use(serve('./initFiles'));
 
 const port = process.env.PORT || 9091;
 const server = http.createServer(app.callback()).listen(port);
