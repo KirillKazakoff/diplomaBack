@@ -4,7 +4,6 @@ import Koa from 'koa';
 import serve from 'koa-static';
 import router from './routes/router';
 
-
 const app = new Koa();
 
 app.use(async (ctx, next) => {
@@ -41,11 +40,7 @@ app.use(async (ctx, next) => {
 
 app.use(router());
 
-// const staticDirPath = path.join(__dirname, 'public');
-// const diePath = path.join(__dirname, '/user/pubic');
 app.use(serve('./public'));
-
-// app.use(serve('./uploads'));
 
 const port = process.env.PORT || 9091;
 const server = http.createServer(app.callback()).listen(port);

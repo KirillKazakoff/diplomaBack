@@ -1,41 +1,19 @@
 /* eslint-disable class-methods-use-this */
+import initData from './dbInit';
 
 class Db {
     constructor() {
-        this.messages = {
-            files: [],
-            messagesData: [],
-        };
+        this.messagesData = initData;
     }
 
-    addMessage(message) {
-        const { file, data } = message;
-
-        this.messages.messagesData.push(data);
-        this.messages.files.push(file);
+    addMessageData(msgData) {
+        this.messagesData.push(msgData);
+        console.log(this.messagesData);
     }
 
     getMessagesData() {
-        return this.messages.messagesData;
+        return this.messagesData;
     }
-
-    getFile(id) {
-        const identificators = this.messages.messagesData.map((data) => data.id);
-        const index = identificators.findIndex((dbId) => dbId === id);
-
-        const { files } = this.messages;
-        const dbFile = files[index];
-
-        return dbFile;
-    }
-
-    // getFiles() {
-    //     return this.messages.files;
-    // }
-
-    // getMessages() {
-    //     return this.messages;
-    // }
 }
 
 const db = new Db();
