@@ -18,7 +18,8 @@ router.post('/message/sendFileData', koaBody(), async (ctx) => {
     ctx.response.body = 'hello';
     const msgData = ctx.request.body;
 
-    db.addMessageData(msgData);
+    console.log(msgData);
+    db.addFileData(msgData);
 });
 
 router.post('/message/sendFile', upload.single('file'), async (ctx) => {
@@ -32,13 +33,10 @@ router.post('/message/sendFile', upload.single('file'), async (ctx) => {
 
 // get router
 router.get('/message/getFilesData', async (ctx) => {
-    ctx.response.body = db.getMessagesData();
+    ctx.response.body = db.getFilesData();
 });
 
 export default router;
-
-
-
 
 // router.get('/message/getFile/:id', async (ctx) => {
 //     const { id } = ctx.params;

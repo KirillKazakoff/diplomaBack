@@ -6,13 +6,20 @@ class Db {
         this.messagesData = initData;
     }
 
-    addMessageData(msgData) {
+    addFileData(msgData) {
         this.messagesData.push(msgData);
-        console.log(this.messagesData);
     }
 
-    getMessagesData() {
+    getFilesData() {
         return this.messagesData;
+    }
+
+    getFilesDataLazy() {
+        const sendPack = [];
+        for (let i = 0; i < 10; i += 1) {
+            sendPack.push(this.messagesData[i]);
+        }
+        return sendPack;
     }
 }
 
