@@ -33,12 +33,8 @@ router.post('/message/sendFile', upload.single('file'), async (ctx) => {
 
 // get router
 router.get('/message/getFilesData', async (ctx) => {
-    ctx.response.body = db.getFilesData();
+    // const dataChunk = db.getFilesData();
+    ctx.response.body = db.getFilesDataLazy();
 });
 
 export default router;
-
-// router.get('/message/getFile/:id', async (ctx) => {
-//     const { id } = ctx.params;
-//     ctx.response.body = db.getFile(id);
-// });

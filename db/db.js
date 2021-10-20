@@ -4,22 +4,41 @@ import initData from './dbInit';
 class Db {
     constructor() {
         this.messagesData = initData;
-        this.lazyIndex = 0;
+        this.initLazy();
+    }
+
+    initLazy() {
+        this.startI = this.messagesData.length - 5;
+        this.length = this.messagesData.length;
+        this.stop = false;
+        this.finalStop = false;
     }
 
     addFileData(msgData) {
         this.messagesData.push(msgData);
     }
 
-    getFilesData() {
-        return this.messagesData;
-    }
-
     getFilesDataLazy() {
         const sendPack = [];
-        for (let i = 0; i < 10; i += 1) {
+        if (this.finalStop) return false;
+
+        for (let i = this.startI; i < this.length; i += 1) {
             sendPack.push(this.messagesData[i]);
         }
+
+        if (this.stop) {
+            this.finalStop = true;
+            return sendPack;
+        }
+
+        this.startI -= 5;
+        this.length -= 5;
+
+        if (this.startI < 0) {
+            this.startI = 0;
+            this.stop = true;
+        }
+
         return sendPack;
     }
 }
