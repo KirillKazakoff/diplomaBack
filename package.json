@@ -23,6 +23,7 @@
         "@babel/node": "^7.15.4",
         "@babel/preset-env": "^7.15.6",
         "@koa/multer": "^3.0.0",
+        "encoding-japanese": "^1.0.30",
         "heroku": "^7.59.0",
         "koa": "^2.0.0",
         "koa-body": "^4.2.0",

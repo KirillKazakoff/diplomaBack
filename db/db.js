@@ -23,6 +23,7 @@ class Db {
         if (this.finalStop) return false;
 
         for (let i = this.startI; i < this.length; i += 1) {
+            if (!this.messagesData[i]) break;
             sendPack.push(this.messagesData[i]);
         }
 
