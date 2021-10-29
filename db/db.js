@@ -18,6 +18,10 @@ class Db {
         this.messagesData.push(msgData);
     }
 
+    getAllFilesData() {
+        return this.messagesData;
+    }
+
     getFilesDataLazy() {
         const sendPack = [];
         if (this.finalStop) return false;
