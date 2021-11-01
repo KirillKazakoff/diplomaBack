@@ -45,3 +45,4 @@ app.use(serve('./initFiles'));
 
 const port = process.env.PORT || 9091;
 const server = http.createServer(app.callback()).listen(port);
+// const myWs = new MyWs(server);
