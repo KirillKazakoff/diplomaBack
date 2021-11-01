@@ -18,7 +18,7 @@ router.post('/message/sendFileData', koaBody(), async (ctx) => {
     ctx.response.body = 'hello';
     const msgData = ctx.request.body;
 
-    console.log(msgData);
+    // console.log(msgData);
     db.addFileData(msgData);
 });
 
