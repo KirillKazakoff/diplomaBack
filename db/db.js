@@ -2,7 +2,7 @@ import initData from './dbInit';
 
 class Db {
     constructor() {
-        this.messagesData = [];
+        this.messagesData = initData;
         this.initLazy();
     }
 
