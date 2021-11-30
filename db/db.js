@@ -1,9 +1,8 @@
-/* eslint-disable class-methods-use-this */
 import initData from './dbInit';
 
 class Db {
     constructor() {
-        this.messagesData = initData;
+        this.messagesData = [];
         this.initLazy();
     }
 
@@ -21,6 +20,11 @@ class Db {
 
     getAllFilesData() {
         return this.messagesData;
+    }
+
+    getFilesDataFiltered(filter) {
+        if (filter === 'all') return this.messagesData;
+        return this.messagesData.filter((msgData) => msgData.name.includes(filter));
     }
 
     getFilesDataLazy() {

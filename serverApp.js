@@ -1,4 +1,3 @@
-// import koaBody from 'koa-body';
 import http from 'http';
 import Koa from 'koa';
 import serve from 'koa-static';
@@ -12,7 +11,7 @@ app.use(async (ctx, next) => {
         return await next();
     }
 
-    const headers = { 'Access-Control-Allow-Origin': '*', };
+    const headers = { 'Access-Control-Allow-Origin': '*' };
 
     if (ctx.request.method !== 'OPTIONS') {
         ctx.response.set({ ...headers });
@@ -31,7 +30,10 @@ app.use(async (ctx, next) => {
         });
 
         if (ctx.request.get('Access-Control-Request-Headers')) {
-            ctx.response.set('Access-Control-Allow-Headers', ctx.request.get('Access-Control-Request-Headers'));
+            ctx.response.set(
+                'Access-Control-Allow-Headers',
+                ctx.request.get('Access-Control-Request-Headers')
+            );
         }
 
         ctx.response.status = 204;
@@ -43,6 +45,6 @@ app.use(router());
 app.use(serve('./public'));
 app.use(serve('./initFiles'));
 
-const port = process.env.PORT || 9091;
+const port = process.env.PORT || 9092;
 const server = http.createServer(app.callback()).listen(port);
 // const myWs = new MyWs(server);
