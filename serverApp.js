@@ -45,6 +45,6 @@ app.use(router());
 app.use(serve('./public'));
 app.use(serve('./initFiles'));
 
+console.log('hello');
 const port = process.env.PORT || 9092;
 const server = http.createServer(app.callback()).listen(port);
-// const myWs = new MyWs(server);

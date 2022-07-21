@@ -15,7 +15,7 @@ const upload = multer({ storage });
 
 // post router
 router.post('/message/sendFileData', koaBody(), async (ctx) => {
-    ctx.response.body = 'hello';
+    ctx.response.body = 'ok';
     const msgData = ctx.request.body;
 
     db.addFileData(msgData);
@@ -23,7 +23,7 @@ router.post('/message/sendFileData', koaBody(), async (ctx) => {
 
 router.post('/message/sendFile', upload.single('file'), async (ctx) => {
     try {
-        ctx.response.body = 'Heilo';
+        ctx.response.body = 'ok';
     } catch (e) {
         ctx.response.body = e;
         ctx.response.status = '400';
@@ -42,8 +42,6 @@ router.get('/message/getAllFilesData', async (ctx) => {
 router.get('/message/getFilesDataFiltered/:filter', async (ctx) => {
     const { filter } = ctx.params;
     const result = db.getFilesDataFiltered(filter);
-    // console.log(db.messagesData);
-    // console.log(result);
     ctx.response.body = result;
 });
 

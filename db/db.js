@@ -1,3 +1,4 @@
+/* eslint-disable arrow-body-style */
 import initData from './dbInit';
 
 class Db {
@@ -15,7 +16,6 @@ class Db {
 
     addFileData(msgData) {
         this.messagesData.push(msgData);
-        console.log(this.messagesData);
     }
 
     getAllFilesData() {
@@ -24,7 +24,9 @@ class Db {
 
     getFilesDataFiltered(filter) {
         if (filter === 'all') return this.messagesData;
-        return this.messagesData.filter((msgData) => msgData.name.includes(filter));
+        return this.messagesData.filter((msgData) => {
+            return msgData.type.includes(filter.toLowerCase());
+        });
     }
 
     getFilesDataLazy() {
